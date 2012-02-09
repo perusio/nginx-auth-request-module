@@ -140,7 +140,10 @@ for requests involving `auth_request`.
 ## Installation 
 
  1. Grab the source from the mercurial
-    [tip](http://mdounin.ru/hg/ngx_http_auth_request_module/archive/tip.tar.gz).
+    [tip](http://mdounin.ru/hg/ngx_http_auth_request_module/archive/tip.tar.gz)
+    or clone this repo:
+
+        git clone git://github.com/perusio/nginx-auth-request-module.git
     
  2.  2. Add the module to the build configuration by adding
     `--add-module=/path/to/ngx_http_auth_request_module`.
@@ -161,6 +164,12 @@ Debian made to measure then you might be interested in my
 package. Instructions for using the repository and making the package
 live happily inside a stable distribution installation are
 [provided](http://debian.perusio.net).
+
+## Other Maxim Dounin Nginx modules on Github
+
+ + [Nginx Delay](https://github.com/perusio/nginx-delay-module):
+   allows for inserting arbitrary delays when serving client requests.
+   Usefull for abuse control and/or poor man's traffic shapping.
 
 ## Acknowledgments
 
