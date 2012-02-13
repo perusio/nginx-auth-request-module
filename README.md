@@ -125,7 +125,7 @@ to `off` and set the `Content-Length` header to a null string. Here's
 and example:
 
     location = /auth {
-        proxy_pass http://auth_nackend;
+        proxy_pass http://auth_backend;
         proxy_pass_request_body off;
         proxy_set_header Content-Length "";
         proxy_set_header X-Original-URI $request_uri;
