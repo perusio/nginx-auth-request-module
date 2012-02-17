@@ -25,9 +25,11 @@ and `DROP` statement in the URI. Suppose that the backoffice of your
 app is located at `/bo`. This will do the trick:
 
     location ^~ /bo {
+        error_page 401 403 $my_error_page;
         auth_basic 'Classified Access';
         auth_basic_user_file .htpasswd-bo-users;
         auth_request /auth;
+        auth_request_set $my_error_page $upstream_http_x_error_page;
     }
 
     location /auth {
@@ -51,7 +53,12 @@ Let's follow the example. There's a request for an URI like this:
  3. If we had requested an **acceptable** URI then we returned 200
     from the `/auth` location and we proceeded as usual to the
     following stage.
-    
+
+ 4. The `$my_error_page` variable is set to the value of the
+    `X-Error-Page` header. This can be used for having specific error
+    pages for each error, for example. This is the error page for 403
+    and 401 errors.  
+
 You might say that this example didn't needed to use `auth_request` in
 the first place. Indeed you could have done everything using a simple
 [`map`](http://wiki.nginx.org/HttpMapModule#map) directive like this:
